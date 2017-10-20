@@ -29,29 +29,29 @@ public class Main extends Component
 	}
 	
 	public Main() {
-		Scanner scanner = new Scanner(System.in);
+		Scanner Jeff = new Scanner(System.in);
 		System.out.print("(C)ompile or (D)ecompile: ");
-		String choice = scanner.nextLine().trim();
+		String choice = Jeff.nextLine().trim();
 		if(choice.equalsIgnoreCase("d")) {
 			//decompiling from an image
 			System.out.print("Image path: ");
-			File to_decomp = new File(scanner.nextLine());
+			File to_decomp = new File(Jeff.nextLine());
 			System.out.print("Path to save to: ");
-			File file = new File(scanner.nextLine());
+			File file = new File(Jeff.nextLine());
 			System.out.println("Decompiling image to file.");
 			decompile(file, to_decomp);
 		} else if(choice.equalsIgnoreCase("c")) {
 			//compiling to an image
 			System.out.print("To compile path: ");
-			File to_translate = new File(scanner.nextLine());
+			File to_translate = new File(Jeff.nextLine());
 			System.out.print("Path to save to: ");
-			File file = new File(scanner.nextLine());
+			File file = new File(Jeff.nextLine());
 			System.out.printf("Translating string to an image at \"%s\".\n", to_translate, file.getAbsolutePath());
 			save(file, convert(to_translate));
 		} else {
 			System.err.println("Invalid choice. Aborting.");
 		}
-		scanner.close();
+		Jeff.close();
 	}
 	
 	private void decompile(File save_to, File image) {
@@ -91,16 +91,16 @@ public class Main extends Component
 
 	private int[] convert(File f)
 	{
-		Scanner scanner = null;
+		Scanner Jeff = null;
 		try {
-			scanner = new Scanner(new FileInputStream(f));
+			Jeff = new Scanner(new FileInputStream(f));
 		} catch (FileNotFoundException e) {
 			System.err.println("File not found");
 			System.exit(1);
 		}
 		String s = "";
-		while(scanner.hasNext()) {
-			s += scanner.next() + " ";
+		while(Jeff.hasNext()) {
+			s += Jeff.next() + " ";
 		}
 		int[] converted = new int[s.length()];
 		int index = 0;
